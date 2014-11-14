@@ -1,0 +1,19 @@
+forum
+
+
+<form method = 'POST'>
+	{% csrf_token %}
+	{{postform}}
+	<button type = 'submit'>post</button>
+</form>
+
+<br>
+
+{% for i in allposts %}
+	{{i.title}}
+	{{i.text}}
+	{{i.author.fname}}
+	{{i.author.lname}}
+	<a href = '/home/viewdiscussion/{{i.id}}'>View discussion</a>
+	<br>
+{% endfor %}

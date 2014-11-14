@@ -1,0 +1,13 @@
+{{discussion.title}}
+<br><br>
+{{discussion.text}}
+
+<form method = 'POST'>
+	{% csrf_token %}
+	{{commentform}}
+	<button type = 'submit'>Comment</button>
+</form>
+<br><br>
+{%for i in comments%}
+	{{i.text}}<br>
+{%endfor%}

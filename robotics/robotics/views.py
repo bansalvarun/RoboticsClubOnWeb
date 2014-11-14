@@ -20,3 +20,12 @@ def logout(request):
 	args = {}
 	args.update(csrf(request))
 	return HttpResponseRedirect('/')
+
+def notmember(request):
+	if request.user.is_authenticated():
+		args = {}
+		args.update(csrf(request))	
+		args['message'] = "you are nto a member"	
+		return render_to_response('welcome.html',args)
+	else:
+		return HttpResponseRedirect('/')
