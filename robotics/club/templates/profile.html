@@ -6,7 +6,12 @@ profile
 <br><br>
 {{user.stream}} {{user.batch}} {{user.rollno}}
 
-
+<br><br><br>
+<form method = 'POST'>
+	{%csrf_token%}
+	{{infoform}}
+	<button type = 'submit'>update details</button>
+</form>
 <br><br><br>
 
 <a href = '/home/addskill'> add skill </a>

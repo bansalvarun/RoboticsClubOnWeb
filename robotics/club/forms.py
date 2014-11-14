@@ -46,6 +46,33 @@ class addproject(forms.ModelForm):
 		model = projects
 		fields = ('title','description','status')
 
+streams = (
+			('ECE','ECE'),
+			('CSE','CSE'),
+	)
+
+batches = (
+
+			('BTech2014','BTech2014'),
+			('BTech2013','BTech2013'),
+			('BTech2012','BTech2012'),
+			('BTech2011','BTech2011'),
+			('MTech2014','MTech2014'),
+			('MTech2013','MTech2013'),
+
+	)
+
+class editinfoform(forms.ModelForm):
+	fname = forms.CharField(required = True,widget = forms.TextInput)
+	lname = forms.CharField(required = True,widget = forms.TextInput)
+	email = forms.CharField(required = True, widget = forms.TextInput)
+	stream = forms.ChoiceField(choices = streams)
+	batch = forms.ChoiceField(choices = batches)
+	rollno = forms.IntegerField(required = True)
+
+	class Meta:
+		model = members
+		fields = ('fname','lname','stream','batch','rollno')
 
 
 

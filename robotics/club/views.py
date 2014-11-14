@@ -140,6 +140,16 @@ def profile(request):
 		args['skills'] = skills.objects.filter(mem = curruser)
 		args['projects'] = projects.objects.filter(mem = curruser)
 		args['user'] = curruser
+		args['infoform'] = editinfoform(initial = {'fname':curruser.fname, 'lname':curruser.lname, 'rollno':curruser.rollno, 'email':curruser.email})
+		args['infoform'].fields['email'].widget.attrs['readonly'] = True
+		
+		if request.method=='POST':
+			curruser.fname = request.POST['fname']
+			curruser.lname = request.POST['lname']
+			curruser.stream = request.POST['stream']
+			curruser.batch = request.POST['batch']
+			curruser.rollno = request.POST['rollno']
+			curruser.save()
 
 		return render_to_response('profile.html',args)
 
