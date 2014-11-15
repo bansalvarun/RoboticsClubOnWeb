@@ -1,5 +1,5 @@
 {% load staticfiles %}
-
+{% load bootstrap %}
 
 <!DOCTYPE html>
 <html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -74,12 +74,13 @@ $(draw);
       <nav id="nav-wrap"> <a class="mobile-btn" href="#" title="Show navigation">Show navigation</a> 
       <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
         <ul id="nav" class="nav">
-          <li><a href="#intro">Home</a></li>
+          <li><a href="/home">Home</a></li>
           <li class="active"><a href="forum.html">Forum</a></li>
           <li><a href="/home/profile">Profile</a></li>
           <li><a href="/home/anouncements">Annoucements</a></li>
           <li><a href="/logout">Logout</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
+          <li><div style = 'margin-left:150px; '>Welcome {{user.fname}} {{user.lname}}</div></li>
         </ul>
       </nav>
     </div>
@@ -88,6 +89,30 @@ $(draw);
 <div class="container">
       <div class="roww">
         <div class="span8">
+          <div class="corgi_feed_well">
+            <div class="feed_stacked">
+              <div class="feed_item">
+                <div class="feed_body">
+                  <div class="row">
+                    <div class="feed_profile_pic">
+                      
+                    </div>
+                    <div class="feed_text" style = 'text-align:center' >
+                      <p><h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        Start new discussion</h3></p>
+                    </div>
+                  </div>
+                </div>
+                <div style = 'text-align:center'>
+                <form method = 'POST'>
+                 {% csrf_token %}
+                  {{postform|bootstrap}}
+                  <button type = 'submit'>post</button>
+                </form>
+               </div>
+              </div>
+            </div>
+          </div>
 
 
           {% for post in allposts %}
@@ -126,7 +151,8 @@ $(draw);
             </div>
           </div>
           {% endfor %}
-     
+    
+
 
         </div> <!-- end span8 -->
         <div class="span4">

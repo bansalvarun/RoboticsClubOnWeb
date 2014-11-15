@@ -44,6 +44,7 @@ def forum(request):
 		allposts = post.objects.all()
 		args = {}
 		args.update(csrf(request))	
+		args['user'] = curruser
 		args['postform'] = postform()	
 		args['allposts'] = allposts
 		args['anouncements'] = anouncement.objects.all()

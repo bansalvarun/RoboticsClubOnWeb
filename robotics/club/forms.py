@@ -4,7 +4,7 @@ from models import *
 
 class postform(forms.ModelForm):
 	title = forms.CharField(required=True,widget=forms.TextInput)
-	text = forms.CharField(required=True,widget=forms.Textarea)
+	text = forms.CharField(required=True,widget=forms.Textarea(attrs={'cols': 30, 'rows': 10}))
 
 	class Meta:
 		model = post
