@@ -9,8 +9,11 @@ from club.forms import *
 
 def memhome(request):
 	if request.user.is_authenticated():
-#		newuser = members(fname = "kush", lname = "admin",email = "kushagra14056@iiitd.ac.in", stream = "CSE", role = '3',batch = 'BTech2014',rollno = '2014056')
+#		newuser = members(fname = "varun", lname = "bansal",email = "varun13168@iiitd.ac.in", stream = "CSE", role = '1',batch = 'BTech2014',rollno = '2014056')
 #		newuser.save()
+
+#		for i in members.objects.all():
+#			print i.fname
 		"""
 		for i in interests.objects.all():
 			i.delete()
@@ -274,8 +277,6 @@ def profile(request):
 		except:
 			return HttpResponseRedirect('/notmember')
 
-		if curruser.fname == " ":
-			return HttpResponseRedirect('/home/profile')
 
 		args = {}
 		args.update(csrf(request))	
