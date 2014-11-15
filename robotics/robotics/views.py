@@ -5,7 +5,7 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect, HttpResponse
 from club.views import *
 from django.http import HttpResponseRedirect
-
+from club.models import *
 def welcome(request):
 	if request.user.is_authenticated():
 		return HttpResponseRedirect('/home')
@@ -20,6 +20,14 @@ def logout(request):
 	args = {}
 	args.update(csrf(request))
 	return HttpResponseRedirect('/')
+
+def about(request):
+	return render_to_response('about.html')
+
+def events(request):
+	eventset = event.objects.all()
+	return render_to_response('events.html',{'events':eventset})
+
 
 def notmember(request):
 	if request.user.is_authenticated():

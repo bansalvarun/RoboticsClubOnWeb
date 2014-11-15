@@ -11,6 +11,8 @@ urlpatterns = patterns('',
     url(r'^logout/', 'robotics.views.logout'),
     url(r'^$', 'robotics.views.welcome', name='welcome.html' ),
     url(r'^notmember/', 'robotics.views.notmember', name='notmember.html' ),
+    url(r'^events/', 'robotics.views.events', name='events.html' ),
+    url(r'^about/', 'robotics.views.about', name='about.html' ),
     (r'^home/', include('club.urls')),
 
 )
