@@ -89,6 +89,7 @@ def viewdiscussion(request,param):
 
 		args = {}
 		args.update(csrf(request))	
+		args['user'] = curruser
 		args['discussion'] = currdiscussion
 		args['commentform'] = commentform()
 		args['comments'] = comment.objects.filter(discussion = currdiscussion)
@@ -110,6 +111,8 @@ def skill(request):
 
 		args = {}
 		args.update(csrf(request))
+		args['user'] = curruser
+
 		args['skillform'] = addskill()
 
 		return render_to_response('skill.html',args)
@@ -130,6 +133,7 @@ def interest(request):
 		args = {}
 		args.update(csrf(request))
 		args['interestform'] = addinterest()
+		args['user'] = curruser
 
 		return render_to_response('interest.html',args)
 	else:
@@ -149,6 +153,7 @@ def project(request):
 		args = {}
 		args.update(csrf(request))
 		args['projectform'] = addproject()
+		args['user'] = curruser
 
 		return render_to_response('project.html',args)
 	else:
@@ -166,6 +171,7 @@ def adduser(request):
 			args = {}
 			args.update(csrf(request))
 			args['adduserform'] = adduserform()
+			args['user'] = curruser
 
 			if request.method=="POST":
 				try:
@@ -218,6 +224,7 @@ def addevent(request):
 		if curruser.role == 3:
 			args = {}
 			args.update(csrf(request))
+			args['user'] = curruser
 
 			args['eventform'] = eventform()
 
@@ -239,6 +246,7 @@ def allusers(request):
 		if curruser.role == 3:
 			args = {}
 			args.update(csrf(request))
+			args['user'] = curruser
 
 			args['allusers'] = members.objects.all()
 
@@ -259,7 +267,8 @@ def removeuser(request,param):
 		if curruser.role == 3:
 			args = {}
 			args.update(csrf(request))
-
+			args['user'] = curruser
+	
 			deleteuser = members.objects.get(id = param)
 			deleteuser.delete()
 			return HttpResponseRedirect('/home/allusers')

@@ -78,9 +78,12 @@ $(draw);
           <li><a href="/home/forum">Forum</a></li>
           <li class="active"><a href="/home/profile">Edit Profile</a></li>
           <li><a href="/home/anouncements">Annoucements</a></li>
+          {% if user.role == 3 %}
+            <li><a href="/home/allusers">All users</a></li>
+          {% endif %}
+
           <li><a href="/logout">Logout</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
-          <li><div style = 'margin-left:150px; '>Welcome {{user.fname}} {{user.lname}}</div></li>
         </ul>
       </nav>
     </div>
