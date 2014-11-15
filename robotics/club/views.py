@@ -187,7 +187,25 @@ def allanouncement(request):
 	else:
 		return HttpResponseRedirect('/')
 
+def addevent(request):
+	if request.user.is_authenticated():
+		try:
+			curruser = members.objects.get(email = request.user.email)
+		except:
+			return HttpResponseRedirect('/notmember')
 
+		if curruser.role == 3:
+			args = {}
+			args.update(csrf(request))
+
+			args['eventform'] = eventform()
+
+			return render_to_response('addevent.html',args)
+
+		else:
+			return HttpResponseRedirect('/home')	
+	else:
+		return HttpResponseRedirect('/')
 
 
 def allusers(request):

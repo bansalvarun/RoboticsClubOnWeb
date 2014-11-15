@@ -21,5 +21,5 @@ urlpatterns = patterns('',
     url(r'^adduser', 'club.views.adduser', name='adminadduser.html' ),
     url(r'^allusers', 'club.views.allusers', name='adminallusers.html' ),
     url(r'^removeuser/(?P<param>.+)', 'club.views.removeuser'),
-
+    url(r'^addevent', 'club.views.addevent', name='addevent.html' ),
 )

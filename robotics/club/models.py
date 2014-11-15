@@ -42,4 +42,9 @@ class anouncement(models.Model):
 	description = models.TextField(max_length = 200)
 	author = models.ForeignKey(members, null=True, blank=True)
 
-	
+class event(models.Model):
+	title = models.CharField(max_length = 50)
+	description = models.TextField(max_length = 200)
+	author = models.ForeignKey(members, null=True, blank=True)
+
+

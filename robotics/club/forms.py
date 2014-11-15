@@ -95,3 +95,18 @@ class anouncementform(forms.ModelForm):
 	class Meta:
 		model = anouncement
 		fields = ('title','description',)
+
+class eventform(forms.ModelForm):
+	title = forms.CharField(required=True,widget=forms.TextInput)
+	description = forms.CharField(required=True,widget=forms.Textarea)
+	author = models.ForeignKey(members, null=True, blank=True)
+
+	class Meta:
+		model = event
+		fields = ('title','description',)
+
+
+
+
+
+
