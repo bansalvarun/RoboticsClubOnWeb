@@ -87,5 +87,11 @@ class adduserform(forms.ModelForm):
 		model = members
 		fields = ('email','role',)
 
+class anouncementform(forms.ModelForm):
+	title = forms.CharField(required=True,widget=forms.TextInput)
+	description = forms.CharField(required=True,widget=forms.Textarea)
+	author = models.ForeignKey(members, null=True, blank=True)
 
-
+	class Meta:
+		model = anouncement
+		fields = ('title','description',)

@@ -158,9 +158,37 @@ def adduser(request):
 			return render_to_response('adminadduser.html',args)
 
 		else:
-			return HttpResponseRedirect('/memhome')	
+			return HttpResponseRedirect('/home')	
 	else:
 		return HttpResponseRedirect('/')
+
+def allanouncement(request):
+	if request.user.is_authenticated():
+		try:
+			curruser = members.objects.get(email = request.user.email)
+		except:
+			return HttpResponseRedirect('/notmember')
+
+		args = {}
+		args.update(csrf(request))
+		args['anouncementform'] = anouncementform()
+		args['user'] = curruser
+
+		args['anouncements'] = anouncement.objects.all()
+
+
+		for i in anouncement.objects.all():
+			print i.title
+		if request.method == 'POST':
+			newanouncement = anouncement(title = request.POST['title'],description = request.POST['description'],author = curruser)
+			newanouncement.save()
+		return render_to_response('anouncements.html',args)
+
+	else:
+		return HttpResponseRedirect('/')
+
+
+
 
 def allusers(request):
 	if request.user.is_authenticated():
@@ -178,7 +206,7 @@ def allusers(request):
 			return render_to_response('adminallusers.html',args)
 
 		else:
-			return HttpResponseRedirect('/memhome')	
+			return HttpResponseRedirect('/home')	
 	else:
 		return HttpResponseRedirect('/')
 
@@ -198,7 +226,7 @@ def removeuser(request,param):
 			return HttpResponseRedirect('/home/allusers')
 
 		else:
-			return HttpResponseRedirect('/memhome')	
+			return HttpResponseRedirect('/home')	
 	else:
 		return HttpResponseRedirect('/')
 
