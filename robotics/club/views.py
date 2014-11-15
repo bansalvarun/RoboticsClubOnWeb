@@ -18,7 +18,10 @@ def memhome(request):
 
 		args = {}
 		args.update(csrf(request))
-
+		args['interests'] = interests.objects.filter(mem = curruser)
+		args['skills'] = skills.objects.filter(mem = curruser)
+		args['projects'] = projects.objects.filter(mem = curruser)
+		args['user'] = curruser
 		if curruser.role == 1:
 			return render_to_response('memberhome.html',args)
 		elif curruser.role == 3:
@@ -131,6 +134,75 @@ def project(request):
 		return HttpResponseRedirect('/')
 
 
+def adduser(request):
+	if request.user.is_authenticated():
+		try:
+			curruser = members.objects.get(email = request.user.email)
+		except:
+			return HttpResponseRedirect('/notmember')
+
+		if curruser.role == 3:
+			args = {}
+			args.update(csrf(request))
+			args['adduserform'] = adduserform()
+
+			if request.method=="POST":
+				try:
+					existuser = members.objects.get(email = request.POST['email'])
+					existuser.role = request.POST['role']
+					existuser.save()
+				except:
+					newuser = members(email = request.POST['email'])
+					newuser.save()
+
+			return render_to_response('adminadduser.html',args)
+
+		else:
+			return HttpResponseRedirect('/memhome')	
+	else:
+		return HttpResponseRedirect('/')
+
+def allusers(request):
+	if request.user.is_authenticated():
+		try:
+			curruser = members.objects.get(email = request.user.email)
+		except:
+			return HttpResponseRedirect('/notmember')
+
+		if curruser.role == 3:
+			args = {}
+			args.update(csrf(request))
+
+			args['allusers'] = members.objects.all()
+
+			return render_to_response('adminallusers.html',args)
+
+		else:
+			return HttpResponseRedirect('/memhome')	
+	else:
+		return HttpResponseRedirect('/')
+
+def removeuser(request,param):
+	if request.user.is_authenticated():
+		try:
+			curruser = members.objects.get(email = request.user.email)
+		except:
+			return HttpResponseRedirect('/notmember')
+
+		if curruser.role == 3:
+			args = {}
+			args.update(csrf(request))
+
+			deleteuser = members.objects.get(id = param)
+			deleteuser.delete()
+			return HttpResponseRedirect('/home/allusers')
+
+		else:
+			return HttpResponseRedirect('/memhome')	
+	else:
+		return HttpResponseRedirect('/')
+
+
 def profile(request):
 	if request.user.is_authenticated():
 		try:
@@ -138,11 +210,11 @@ def profile(request):
 		except:
 			return HttpResponseRedirect('/notmember')
 
+		if curruser.fname == " ":
+			return HttpResponseRedirect('/update')
+
 		args = {}
 		args.update(csrf(request))	
-		args['interests'] = interests.objects.filter(mem = curruser)
-		args['skills'] = skills.objects.filter(mem = curruser)
-		args['projects'] = projects.objects.filter(mem = curruser)
 		args['user'] = curruser
 		args['infoform'] = editinfoform(initial = {'fname':curruser.fname, 'lname':curruser.lname, 'rollno':curruser.rollno, 'email':curruser.email})
 		args['infoform'].fields['email'].widget.attrs['readonly'] = True

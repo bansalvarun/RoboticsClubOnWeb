@@ -14,4 +14,11 @@ urlpatterns = patterns('',
     url(r'^addproject', 'club.views.project', name='project.html' ),
     url(r'^viewdiscussion/(?P<param>.+)', 'club.views.viewdiscussion', name='discussion.html' ),
 
+
+    #admin 
+
+    url(r'^adduser', 'club.views.adduser', name='adminadduser.html' ),
+    url(r'^allusers', 'club.views.allusers', name='adminallusers.html' ),
+    url(r'^removeuser/(?P<param>.+)', 'club.views.removeuser'),
+
 )

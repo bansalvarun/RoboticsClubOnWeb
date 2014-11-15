@@ -11,7 +11,7 @@ class members(models.Model):
 	stream = models.CharField(max_length=3,default = "ECE")
 	role = models.IntegerField(max_length = 1, default = 0)		# 0 ->no info, 1 ->member, 3 ->admin, 5 ->prof
 	batch = models.CharField(max_length = 9, default = "Btech2014")
-	rollno = models.IntegerField(max_length = 7)
+	rollno = models.IntegerField(max_length = 7, default = '1')
 
 class post(models.Model):
 	title = models.CharField(max_length = 50)
@@ -36,3 +36,10 @@ class projects(models.Model):
 	description = models.TextField(max_length = 200)
 	status = models.IntegerField(max_length = 1)
 	mem = models.ForeignKey(members,blank = True, null = True)
+
+class anouncement(models.Model):
+	title = models.CharField(max_length = 50)
+	description = models.TextField(max_length = 200)
+	author = models.ForeignKey(members, null=True, blank=True)
+
+	

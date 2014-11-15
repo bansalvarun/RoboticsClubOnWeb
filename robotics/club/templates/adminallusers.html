@@ -1,0 +1,16 @@
+allusers<br><br>
+
+
+{%for user in allusers%}
+
+	{{user.fname}} {{user.lname}} {{user.email}} {{user.rollno}} 
+	{% if user.role == 1%}
+	member
+	{% elif user.role == 3%}
+	admin
+	{% endif %}
+	{{user.batch}} {{user.stream}} <a href = 'removeuser/{{user.id}}'>remove member</a>
+
+	<br><br><br>
+
+{% endfor %}

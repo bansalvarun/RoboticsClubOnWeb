@@ -65,7 +65,7 @@ batches = (
 class editinfoform(forms.ModelForm):
 	fname = forms.CharField(required = True,widget = forms.TextInput)
 	lname = forms.CharField(required = True,widget = forms.TextInput)
-	email = forms.CharField(required = True, widget = forms.TextInput)
+	email = forms.EmailField(required = True,widget = forms.TextInput)
 	stream = forms.ChoiceField(choices = streams)
 	batch = forms.ChoiceField(choices = batches)
 	rollno = forms.IntegerField(required = True)
@@ -74,7 +74,18 @@ class editinfoform(forms.ModelForm):
 		model = members
 		fields = ('fname','lname','stream','batch','rollno')
 
+roles = (
+			('1','member'),
+			('3','admin'),
+	)
 
+class adduserform(forms.ModelForm):
+	email = forms.EmailField()
+	role = forms.ChoiceField(choices = roles)
+
+	class Meta:
+		model = members
+		fields = ('email','role',)
 
 
 

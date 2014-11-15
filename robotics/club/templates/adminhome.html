@@ -1,1 +1,37 @@
 adminhome
+
+<a href = './adduser'> add user </a>
+
+
+<a href = '/logout'> logout </a>
+
+<a href = './forum'> forum </a>
+
+<a href = './profile'> update profile </a>
+
+<a href = './allusers'> All users </a>
+
+
+<br><br><br><br><br><br><br>
+
+SKILLS<br>
+
+{% for i in skills %}
+	{{i.skill}}<br>
+{%endfor%}
+
+<br><br><br><br><br><br><br>
+
+INTERESTS<br>
+
+{% for i in interests %}
+	{{i.interest}}<br>
+{%endfor%}
+
+<br><br><br><br><br><br><br>
+
+PROJECTS<br>
+
+{% for i in projects %}
+	{{i.title}}	{{i.description}}<br>
+{%endfor%}
