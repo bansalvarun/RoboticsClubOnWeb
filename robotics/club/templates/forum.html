@@ -182,10 +182,10 @@ $(draw);
             </div>
             <hr class="feed_hr">
             <div class="sidebar_interior">
-              {% for i in anouncements %}
-              <i class="icon-ok"></i> {{i.title}}<br>
+              {% for announcement in anouncements %}
+              <i class="icon-ok"></i> {{announcement.title}}<br>
               <div class = 'bottom_right'>
-                {{i.description}}
+                {{announcement.description}}
               </div>
               <br><br>
               {%endfor%}

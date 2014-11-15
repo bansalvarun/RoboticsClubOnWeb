@@ -9,25 +9,6 @@ from club.forms import *
 
 def memhome(request):
 	if request.user.is_authenticated():
-#		newuser = members(fname = "varun", lname = "bansal",email = "varun13168@iiitd.ac.in", stream = "CSE", role = '1',batch = 'BTech2014',rollno = '2014056')
-#		newuser.save()
-
-#		for i in members.objects.all():
-#			print i.fname
-		"""
-		for i in interests.objects.all():
-			i.delete()
-		for i in projects.objects.all():
-			i.delete()
-		for i in skills.objects.all():
-			i.delete()
-		for i in anouncement.objects.all():
-			i.delete()
-		for i in post.objects.all():
-			i.delete()
-		for i in comment.objects.all():
-			i.delete()
-		"""
 		try:
 			curruser = members.objects.get(email = request.user.email)
 		except:
