@@ -20,7 +20,7 @@
 
 <!--[if lt IE 9]>
 <script src="js/html5.js"></script>
-<![endif]-->
+<![endif]-->r
 <link rel="shortcut icon" href="./design/logo.png">
 <!--<script>
     function draw() {
@@ -75,7 +75,7 @@ $(draw);
       <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
         <ul id="nav" class="nav">
           <li><a href="/home">Home</a></li>
-          <li class="active"><a href="/home/forum">Forum</a></li>
+          <li><a href="forum">Forum</a></li>
           <li><a href="/home/profile">Edit Profile</a></li>
           <li><a href="/home/anouncements">Annoucements</a></li>
           {% if user.role == 3 %}
@@ -84,7 +84,8 @@ $(draw);
 
           <li><a href="/logout">Logout</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
-        </ul>
+          <li><div style = 'margin-left:50px; '>Welcome {{user.fname}} {{user.lname}}</div></li>
+       </ul>
       </nav>
     </div>
   </div>
@@ -92,47 +93,6 @@ $(draw);
 <div class="container">
       <div class="roww">
         <div class="span8">
-
-          <div class="corgi_feed_well">
-            <div class="feed_stacked">
-              <div class="feed_item">
-                <div class="feed_body">
-                  <div class="row">
-
-                    <div class="feed_text" style = 'text-align:center' >
-                      <p><h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        Start new discussion</h3></p>
-                    </div>
-                  </div>
-                <div class="comment_area">
-                <div class="row">
-                <div style = 'text-align:center'>
-                <form method = 'POST'>
-                 {% csrf_token %}
-                  {{postform|bootstrap}}
-                  <button type = 'submit'>post</button>
-                </form>
-               </div>
-               </div>
-
-                </div>
-                <hr class="feed_hr">
-                <div class="bottom_meta">
-                  <div class="row">
-
-                    <div class="bottom_right">
-                      <a href="" class="show_comment_link">click here</a> 
-                    </div> 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-          {% for post in allposts %}
           <div class="corgi_feed_well">
             <div class="feed_stacked">
               <div class="feed_item">
@@ -142,54 +102,136 @@ $(draw);
                       
                     </div>
                     <div class="feed_text">
-                      <p>{{post.title}}</p>
+                      <p>Skills</p>
                     </div>
                   </div>
                 </div>
                 <div class="comment_area">
-                <div class="row">
-                    <h5>{{post.text}}</h5>
-                </div>
+                	<ul>
+				{% for i in skills %}
+					<li><h5>{{i.skill}}</h5></li>
+				{%endfor%} 
 
+					</ul>
                 </div>
                 <hr class="feed_hr">
                 <div class="bottom_meta">
                   <div class="row">
-                    <div class = "bottom_left">
-                      <a href = '/home/viewuser/{{post.author.id}}'>{{post.author.fname}} {{post.author.lname}}</a>
-
-                    </div>
                     <div class="bottom_right">
-                      <a href="/home/viewdiscussion/{{post.id}}">View Comments</a> &nbsp&nbsp&nbsp&nbsp
-                      <a href="" class="show_comment_link">Read More</a> 
-
+                      <a href="" class="show_comment_link">View skills</a> 
                     </div> 
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {% endfor %}
-    
+          
+          <div class="corgi_feed_well">
+            <div class="feed_stacked">
+              <div class="feed_item">
+                <div class="feed_body">
+                  <div class="row">
+                    <div class="feed_profile_pic">
+                      
+                    </div>
+                    <div class="feed_text">
+                      <p>Interests</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment_area">
+                 	<ul>
+				{% for i in interests %}
+					<li><h5>{{i.interest}}</h5></li>
+				{%endfor%} 
+					</ul>
 
+
+                </div>
+                <hr class="feed_hr">
+                <div class="bottom_meta">
+                  <div class="row">
+                    <div class="bottom_right">
+                      <a href="" class="show_comment_link">View Interests</a> 
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="corgi_feed_well">
+            <div class="feed_stacked">
+              <div class="feed_item">
+                <div class="feed_body">
+                  <div class="row">
+                    <div class="feed_profile_pic">
+                      
+                    </div>
+                    <div class="feed_text">
+                      <p>Projects</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment_area">
+                	<ul>
+				{% for i in projects %}
+					<li><h5>{{i.title}}</h5></li>
+					<ul>
+						<li>{{i.description}} </li>
+						{% if i.status == 0 %}
+							<li>Not Completed</li>
+						{% else %}
+							<li>Completed</li>
+						{% endif %}
+					</ul>
+
+				{%endfor%}
+					</ul>
+                      
+                </div>
+                <hr class="feed_hr">
+                <div class="bottom_meta">
+                  <div class="row">
+                    <div class="bottom_right">
+                      <a href="" class="show_comment_link">View Projects</a> 
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+
+
+
+        
 
         </div> <!-- end span8 -->
         <div class="span4">
           <div class="corgi_feed_well">
             <div class="sidebar_header">
               <div class="sidebar_title">
-                <h4>Recent announcements</h4>
+                <h3>{{viewuser.fname}} {{viewuser.lname}} </h3>
               </div>
             </div>
             <hr class="feed_hr">
             <div class="sidebar_interior">
-              {% for i in anouncements %}
-              <i class="icon-ok"></i> {{i.title}}<br>
-              <div class = 'bottom_right'>
-                {{i.description}}
-              </div>
+              <h4>IIIT Delhi</h4>
+              <br>
+              <i class="icon-ok"></i> {% if useviewuserr.role == 1%}
+              Member
+              {% else %}
+              Admin
+              {% endif %}
               <br><br>
-              {%endfor%}
+              <i class="icon-ok"></i> roll number : {{viewuser.rollno}}
+              <br><br>
+              <i class="icon-ok"></i> {{useviewuserr.batch}} {{viewuser.stream}}
+              <br><br>
+              <i class="icon-ok"></i>  {{viewuser.email}}
+              <br><br>
 
             </div>
           </div>

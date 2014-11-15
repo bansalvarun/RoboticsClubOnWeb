@@ -108,7 +108,7 @@ $(draw);
                     <div class="col">
                         <h4>{{discussion.text}}</h4>
                         <br><br>
-                        posted by - {{discussion.author.fname}} {{discussion.author.lname}}
+                        posted by - <a href = '/home/viewuser/{{discussion.author.id}}'>{{discussion.author.fname}} {{discussion.author.lname}}</a>
 
                     </div>
                     <br><br>
@@ -136,7 +136,7 @@ $(draw);
                 <div class="bottom_meta">
                   {{i.text}} 
                   <div style = 'text-align:right'>
-                    {{i.author.fname}} {{i.author.lname}}&nbsp&nbsp&nbsp&nbsp
+                    <a href = '/home/viewuser/{{i.author.id}}'>{{i.author.fname}} {{i.author.lname}}</a> &nbsp&nbsp&nbsp&nbsp
                   </div>
 
                 </div>

@@ -46,6 +46,33 @@ def memhome(request):
 	else:
 		return HttpResponseRedirect('/')
 
+def viewuser(request,param):
+	if request.user.is_authenticated():
+		try:
+			curruser = members.objects.get(email = request.user.email)
+		except:
+			return HttpResponseRedirect('/notmember')
+
+		try:
+			print param
+			viewmember = members.objects.get(id = param)
+			if viewmember.id == curruser.id:
+				return HttpResponseRedirect('/home')
+		except:
+			return HttpResponseRedirect('/home')		
+
+		args = {}
+		args.update(csrf(request))
+		args['viewuser'] = viewmember	
+		args['interests'] = interests.objects.filter(mem = viewmember)
+		args['skills'] = skills.objects.filter(mem = viewmember)
+		args['projects'] = projects.objects.filter(mem = viewmember)
+		args['user'] = curruser
+		return render_to_response('viewuser.html',args)
+
+	else:
+		return HttpResponseRedirect('/')
+
 
 def forum(request):
 	if request.user.is_authenticated():
