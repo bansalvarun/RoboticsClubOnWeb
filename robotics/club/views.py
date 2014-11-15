@@ -241,6 +241,31 @@ def allanouncement(request):
 	else:
 		return HttpResponseRedirect('/')
 
+def allevents(request):
+	if request.user.is_authenticated():
+		try:
+			curruser = members.objects.get(email = request.user.email)
+		except:
+			return HttpResponseRedirect('/notmember')
+
+		args = {}
+		args.update(csrf(request))
+		args['eventform'] = eventform()
+		args['user'] = curruser
+
+		args['events'] = event.objects.all()
+
+
+		for i in event.objects.all():
+			print i.title
+		if request.method == 'POST':
+			newevent = event(title = request.POST['title'],description = request.POST['description'],author = curruser)
+			newevent.save()
+		return render_to_response('event.html',args)
+
+	else:
+		return HttpResponseRedirect('/')
+
 def addevent(request):
 	if request.user.is_authenticated():
 		try:
@@ -270,17 +295,12 @@ def allusers(request):
 		except:
 			return HttpResponseRedirect('/notmember')
 
-		if curruser.role == 3:
-			args = {}
-			args.update(csrf(request))
-			args['user'] = curruser
+		args = {}
+		args.update(csrf(request))
+		args['user'] = curruser
+		args['allusers'] = members.objects.all()
+		return render_to_response('adminallusers.html',args)
 
-			args['allusers'] = members.objects.all()
-
-			return render_to_response('adminallusers.html',args)
-
-		else:
-			return HttpResponseRedirect('/home')	
 	else:
 		return HttpResponseRedirect('/')
 

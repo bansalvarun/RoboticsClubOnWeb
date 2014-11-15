@@ -78,7 +78,7 @@ $(draw);
           <li ><a href="/home/forum">Forum</a></li>
           <li><a href="/home/profile">Edit Profile</a></li>
           <li><a href="/home/anouncements">Annoucements</a></li>
-          <li ><a href="/home/events">Events</a></li>
+          <li class = 'active'><a href="/home/events">Events</a></li>
             <li><a href="/home/allusers">All users</a></li>
           <li><a href="/logout">Logout</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
@@ -89,9 +89,11 @@ $(draw);
 </header>
 <div class="container">
       <div class="roww">
+        <div class = 'span2'></div>
         <div class="span8">
 
 
+{% if user.role == 3%}
           <div class="corgi_feed_well">
             <div class="feed_stacked">
               <div class="feed_item">
@@ -100,24 +102,80 @@ $(draw);
                     <div class="feed_profile_pic">
                       
                     </div>
-                   <div class="feed_text">
-                      <h3>Add Project</h3>
-                    </div><br><br><br>
-
                     <div class="feed_text">
- 
-  <form method = 'POST'>
-    {% csrf_token %}
-    {{projectform | bootstrap}}
-    <button type = 'submit' class = 'btn btn-success'>add project </button>
-  </form>
+                      <p><h3>Add event</h3></p>
                     </div>
                   </div>
                 </div>
+                <div class="comment_area">
+                <div class="row">
+  <form method = 'POST'>
+    {% csrf_token %}
+    {{eventform}}
+    <button type = 'submit' class = 'btn btn-success'>add event</button>
+  </form>
 
+
+
+                </div>
+
+                </div>
+                <hr class="feed_hr">
+                <div class="bottom_meta">
+                  <div class="row">
+                    <div class="bottom_right">
+                      <a href="" class="show_comment_link">Click here</a> 
+
+                    </div> 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+
+
+{% endif %}
+
+          {% for i in events %}
+          <div class="corgi_feed_well">
+            <div class="feed_stacked">
+              <div class="feed_item">
+                <div class="feed_body">
+                  <div class="row">
+                    <div class="feed_profile_pic">
+                      
+                    </div>
+                    <div class="feed_text">
+                      <p><h3>{{i.title}}</h3></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment_area">
+                <div class="row">
+
+                  {{i.description}}
+
+                </div>
+
+                </div>
+                <hr class="feed_hr">
+                <div class="bottom_meta">
+                  <div class="row">
+                    <div class = "bottom_left">
+                    posted by - <a href = '/home/viewuser/{{i.author.id}}'>{{i.author.fname}} {{i.author.lname}}
+                    </div>
+                    <div class="bottom_right">
+                      <a href="" class="show_comment_link">View Details</a> 
+
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+    
 
 
         </div> <!-- end span8 -->

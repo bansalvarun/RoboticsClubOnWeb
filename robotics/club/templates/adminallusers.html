@@ -78,9 +78,8 @@ $(draw);
           <li ><a href="/home/forum">Forum</a></li>
           <li><a href="/home/profile">Edit Profile</a></li>
           <li><a href="/home/anouncements">Annoucements</a></li>
-          {% if user.role == 3 %}
+          <li ><a href="/home/events">Events</a></li>
             <li  class="active" ><a href="/home/allusers">All users</a></li>
-          {% endif %}          
           <li><a href="/logout">Logout</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
         </ul>
@@ -92,11 +91,13 @@ $(draw);
       <div class="roww">
         <div class = 'span2'></div>
         <div class="span8">
+  {% if user.role == 3%}
   <div style = 'text-align:center;'> 
   <form method = 'link' action = '/home/adduser'>
     <button type = 'submit' class = 'btn btn-success'>add user </button>
   </form>
 </div>
+  {% endif %}
 
           {% for i in allusers %}
           <div class="corgi_feed_well">
@@ -110,10 +111,12 @@ $(draw);
                     <div class="feed_text">
                       <p><a href = '/home/viewuser/{{i.id}}'>{{i.email}}</a>
                       <span style = 'text-align:right'>
+                      {% if user.role == 3%}
                     {% if i.role == 1 %}
                     <a href = '/home/removeuser/{{i.id}}'><button class = 'btn btn-danger '>Delete member</button></a>
                     {% else %}
                     <a href = '/home/removeuser/{{i.id}}'><button class = 'btn btn-danger '>Delete admin</button></a>
+                    {% endif %}
                     {% endif %}
                   </span>
                     </p>

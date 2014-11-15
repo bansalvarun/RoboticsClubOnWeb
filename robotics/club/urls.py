@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^addinterest', 'club.views.interest', name='interest.html' ),
     url(r'^addproject', 'club.views.project', name='project.html' ),
     url(r'^anouncements', 'club.views.allanouncement', name='anouncement.html' ),
+    url(r'^events', 'club.views.allevents', name='event.html' ),
     url(r'^viewdiscussion/(?P<param>.+)', 'club.views.viewdiscussion', name='discussion.html' ),
     url(r'^viewuser/(?P<param>.+)', 'club.views.viewuser', name='viewsuser.html' ),
 
