@@ -1,0 +1,177 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Robotics Club - IIITD</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="{% static "design/base.css" %}">
+<link rel="stylesheet" href="{% static "design/layout.css" %}">
+
+
+<link href="{% static "designforum/bootstrap.css" %}" rel="stylesheet">
+<link href="{% static "designforum/css" %}" rel="stylesheet" type="text/css">
+<link href="{% static "designforum/corgi.css" %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static "designforum/elusive-webfont.css" %}">
+<script src="{% static "designforum/jquery.min.js" %}" type="text/javascript"></script><style type="text/css"></style>
+<script src="{% static "designforum/corgi.js" %}" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="./design/logo.png">
+<!--<script>
+    function draw() {
+    var width = $(document).width();
+    var height = $(document).height();
+
+    $("section").width(width).height(height);
+}
+
+$(document).resize(draw);
+$(draw);
+    </script>-->
+     <style>
+      body {
+         margin-top:100px;
+         
+      }
+      #resize_wrapper {
+      }
+   </style>
+   <script src="{% static "design/jquery-latest.min.js" %}"></script><style type="text/css"></style>
+   <script>
+      function reSize(id) {
+         // @obj - get the element with the given ID
+         // @w - the current width of the viewer window
+         // @h - the current height of the viewer window
+         var obj=$('#'+id),w=$(window).width(),h=$(window).height();
+         obj.css({
+            width:w,
+            height:h
+         });
+      }
+      $(function(){
+         // @obj_id - set the ID of the element you want to resize
+         var obj_id='resize_wrapper';
+         // Call the function on page load
+         reSize(obj_id);
+         // Then create an event handler that calls the function whenever the user resizes the browser
+         $(window).resize(function(){
+            reSize(obj_id);
+         });
+      });
+   </script>
+</head>
+<body data-spy="scroll" data-target="#nav-wrap">
+    <div id="resize_wrapper" style="width: 1349px; height: 624px;">
+<header class="mobile">
+  <div class="row">
+    <div class="col full">
+      <div class="logo"> <a href="#"><img alt="" src="./design/logo.png"></a> </div>
+      <nav id="nav-wrap"> <a class="mobile-btn" href="#" title="Show navigation">Show navigation</a> 
+      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+        <ul id="nav" class="nav">
+          <li><a href="#intro">Home</a></li>
+          <li class="active"><a href="forum.html">Forum</a></li>
+          <li><a href="/home/profile">Profile</a></li>
+          <li><a href="/home/anouncements">Annoucements</a></li>
+          <li><a href="/logout">Logout</a></li>
+          <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<div class="container">
+      <div class="roww">
+        <div class="span8">
+
+
+          {% for post in allposts %}
+          <div class="corgi_feed_well">
+            <div class="feed_stacked">
+              <div class="feed_item">
+                <div class="feed_body">
+                  <div class="row">
+                    <div class="feed_profile_pic">
+                      
+                    </div>
+                    <div class="feed_text">
+                      <p>{{post.title}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment_area">
+                <div class="row">
+                    <h5>{{post.text}}</h5>
+                </div>
+
+                </div>
+                <hr class="feed_hr">
+                <div class="bottom_meta">
+                  <div class="row">
+                    <div class = "bottom_left">
+                      {{post.author.fname}} {{post.author.lname}}
+
+                    </div>
+                    <div class="bottom_right">
+                      <a href="" class="show_comment_link">Read More</a> 
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+     
+
+        </div> <!-- end span8 -->
+        <div class="span4">
+          <div class="corgi_feed_well">
+            <div class="sidebar_header">
+              <div class="sidebar_title">
+                <h4>Recent announcements</h4>
+              </div>
+            </div>
+            <hr class="feed_hr">
+            <div class="sidebar_interior">
+              {% for i in anouncements %}
+              <i class="icon-ok"></i> {{i.title}}<br>
+              <div class = 'bottom_right'>
+                {{i.description}}
+              </div>
+              <br><br>
+              {%endfor%}
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+
+<footer>
+  <div class="row">
+    <div class="col g-7">
+      <ul class="copyright">&copy
+        <li>Developed by <a href="https://facebook.com/bvarun08"><b>Varun Bansal</a></b> and <a href="https://www.facebook.com/kushagra1996"><b>Kushagra Singh</b></a></li>
+        
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="{% static "design/jquery-1.10.2.min.js" %}"></script>
+<script src="{% static "design/jquery-migrate-1.2.1.min.js" %}"></script>
+<script src="{% static "design/smoothscrolling.js" %}"></script>
+<script src="{% static "design/scrollspy.js" %}"></script>
+<script src="{% static "design/jquery.flexslider.js" %}"></script>
+<script src="{% static "design/jquery.reveal.js" %}"></script>
+<script src="{% static "design/init.js" %}"></script>
+</div>
+
+</body></html>

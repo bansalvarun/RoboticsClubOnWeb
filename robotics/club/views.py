@@ -46,6 +46,9 @@ def forum(request):
 		args.update(csrf(request))	
 		args['postform'] = postform()	
 		args['allposts'] = allposts
+		args['anouncements'] = anouncement.objects.all()
+		length = len(args['anouncements'])
+		args['anouncements'] = args['anouncements'][length-3:][::-1]
 		return render_to_response('forum.html',args)
 	else:
 		return HttpResponseRedirect('/')
@@ -180,7 +183,7 @@ def allanouncement(request):
 		for i in anouncement.objects.all():
 			print i.title
 		if request.method == 'POST':
-			newanouncement = anouncement(title = request.POST['title'],description = request.POST['description'],author = curruser)
+			newanouncement = anouncement(title = request.POST['title'],author = curruser)
 			newanouncement.save()
 		return render_to_response('anouncements.html',args)
 
