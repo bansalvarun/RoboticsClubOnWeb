@@ -1,6 +1,194 @@
-<form method = 'link' action = "{% url 'socialauth_begin' 'google-oauth2' %}">
-	<button type = 'submit' > log in using your google account </button>
-</form> 
+{% load staticfiles %}
 
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Robotics Club - IIITD</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="{% static "design/base.css" %}">
+<link rel="stylesheet" href="{% static "design/layout.css" %}">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="{% static "design/logo.png" %}">
+<!--<script>
+    function draw() {
+    var width = $(document).width();
+    var height = $(document).height();
 
-{{message}}
+    $("section").width(width).height(height);
+}
+
+$(document).resize(draw);
+$(draw);
+    </script>-->
+     <style>
+      body {
+         margin:0;
+         padding:0;
+      }
+      #resize_wrapper {
+      }
+   </style>
+   <script src="{% static "design/jquery-latest.min.js" %}" ></script><style type="text/css"></style>
+   <script>
+      function reSize(id) {
+         // @obj - get the element with the given ID
+         // @w - the current width of the viewer window
+         // @h - the current height of the viewer window
+         var obj=$('#'+id),w=$(window).width(),h=$(window).height();
+         obj.css({
+            width:w,
+            height:h
+         });
+      }
+      $(function(){
+         // @obj_id - set the ID of the element you want to resize
+         var obj_id='resize_wrapper';
+         // Call the function on page load
+         reSize(obj_id);
+         // Then create an event handler that calls the function whenever the user resizes the browser
+         $(window).resize(function(){
+            reSize(obj_id);
+         });
+      });
+   </script>
+</head>
+<body data-spy="scroll" data-target="#nav-wrap">
+    <div id="resize_wrapper" style="width: 1349px; height: 624px;">
+<header class="mobile">
+  <div class="row">
+    <div class="col full">
+      <div class="logo"> <a href="#"><img alt="" src="{% static "images/sample.png" %}"></a> </div>
+      <nav id="nav-wrap"> <a class="mobile-btn" href="#" title="Show navigation">Show navigation</a> 
+      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+        <ul id="nav" class="nav">
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#news">News and Achievement</a></li>
+          <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
+          <li style = 'margin-left:300px;'><a href = "{% url 'socialauth_begin' 'google-oauth2' %}">Members</a>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<section id="intro">
+  <div id="intro-slider" class="flexslider">
+    <ul class="slides">
+        <li class="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+        <div class="row">
+          <div class="col full">
+            <div class="slider-text">
+              <h2>Hello, We at <span>IIIT Delhi</span> that provides students with a chance to design and deliver robots.</h2>
+              <p>There are no secrets to success. It is the result of preparation, hard work, and learning from failure.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
+        <div class="row">
+          <div class="col full">
+            <div class="slider-text">
+              <h2>Take a look at some of <a href="#projects">our works</a> or <a href="#contact">get in touch</a> to discuss how we can help you.</h2>
+              <p>If opportunity doesn't knock, build a door.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+        <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" class="">
+        <div class="row">
+          <div class="col full">
+            <div class="slider-text">
+              <h2>Here you can learn the concepts of Robotics. No prior experience required, <span>Enthusiasm</span> is all we need.</h2>
+              <p>Learning and innovation go hand in hand. The arrogance of success is to think that what you did yesterday will be sufficient for tomorrow.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  <ul class="flex-direction-nav"><li><a class="flex-prev" href="#">Previous</a></li><li><a class="flex-next" href="#">Next</a></li></ul></div>
+</section>
+<section id="about">
+  <div class="row section-head">
+    <div class="col one-fourth">
+      <h2>About Us</h2>
+      <p class="desc">This is what we are.</p>
+    </div>
+    <div class="col three-fourths">
+      <p class="intro">The <a>Robotics Club</a> of IIIT Delhi is a fraternity, not just a group but a faction of such students whose passions dwell in beholding wires and metal beget a machine that has a brain of its own. It's here, that seeds of lecturing are sown by those experienced and erudite, nurtured by the interested and novice , pruned by minute yet unprecedented errors and harvested in competitions all over India. The Club offers indispensible guidance, workshops and tutorials along with tools, equipments, components and workspace. The family meets periodically to discuss over matters such as the management of the workspace, workshops, projects and competitions. We welcome anyone, with or without prior knowledge, who wishes to be a part of this fraternity. There are no pre-requisites to join because we have members that believe in the transfer of knowledge, especially that which concerns our precious interest in Robotics.
+    </p></div>
+  </div>
+  <div class="row">
+    <div class="col full">
+      <h3>Our Work Process.</h3>
+    </div>
+  </div>
+  <div class="row process-wrap">
+    <div class="col">
+      <h4>Explore.</h4>
+      <p>Exploring project ideas, thinking out of the box, innovation is what we are good at.</p>
+    </div>
+    <div class="col">
+      <h4>Design.</h4>
+      <p>Designing our projects for optimum working and working on details makes us look different.</p>
+    </div>
+    <div class="col m-first">
+      <h4>Develop.</h4>
+      <p>Constructing the robot, doing trial runs, minimizing the human errors.</p>
+    </div>
+    <div class="col">
+      <h4>Deliver.</h4>
+      <p>And finally delivering the robot to the club and to IIITD Students.</p>
+    </div>
+  </div>
+</section>    
+<section id="news">
+  <div class="row section-head">
+    <div class="col full">
+      <h2>News and Achievement</h2>
+      <p class="desc">Our latest posts and rants.</p>
+    </div>
+  </div>
+
+  <div class="blog-entries">
+      <article class="entry">
+      <div class="row entry-header">
+        <div class="author-image"> <img src="image source" alt=""></div>
+        <div class="col g-9 offset-1 entry-title">
+          <h3><a href="#">Name the news</a></h3>
+        </div>
+        <div class="col g-2">
+          <p class="post-meta">
+            <time pubdate="" class="post-date" datetime="date here">Date</time>
+            <span class="dauthor">the author</span></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col g-9 offset-1 post-content">
+          <p>blah blah</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+ 
+ <footer>
+  <div class="row">
+    <div class="col g-7">
+      <ul class="copyright">
+        <li>Developed by <a href="facebook.com/bvarun08"><b>Varun Bansal</a></b> and <a href="https://www.facebook.com/kushagra1996"><b>Kushagra Singh</b></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="{% static "design/jquery-1.10.2.min.js" %}"></script>
+<script src="{% static "design/jquery-migrate-1.2.1.min.js" %}"></script>
+<script src="{% static "design/smoothscrolling.js" %}"></script>
+<script src="{% static "design/scrollspy.js" %}"></script>
+<script src="{% static "design/jquery.flexslider.js" %}"></script>
+<script src="{% static "design/jquery.reveal.js" %}"></script>
+<script src="{% static "design/init.js" %}"></script>
+</div>
+
+</body></html>

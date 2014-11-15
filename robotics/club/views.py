@@ -9,7 +9,7 @@ from club.forms import *
 
 def memhome(request):
 	if request.user.is_authenticated():
-#		newuser = members(fname = "kushagra", lname = "singh",email = "singh.kushagra.1996@gmail.com", stream = "CSE", role = '1',batch = 'BTech2014',rollno = '2014056')
+#		newuser = members(fname = "kush", lname = "admin",email = "kushagra14056@iiitd.ac.in", stream = "CSE", role = '3',batch = 'BTech2014',rollno = '2014056')
 #		newuser.save()
 		try:
 			curruser = members.objects.get(email = request.user.email)
@@ -18,7 +18,11 @@ def memhome(request):
 
 		args = {}
 		args.update(csrf(request))
-		return render_to_response('memberhome.html',args)
+
+		if curruser.role == 1:
+			return render_to_response('memberhome.html',args)
+		elif curruser.role == 3:
+			return render_to_response('adminhome.html',args)
 	else:
 		return HttpResponseRedirect('/')
 
