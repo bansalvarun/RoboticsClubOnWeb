@@ -6,3 +6,33 @@ home
 <a href = './forum'> forum </a>
 
 <a href = './profile'> update profile </a>
+
+<a href = '/home/addskill'> add skill </a>
+<a href = '/home/addinterest'> add interest </a>
+<a href = '/home/addproject'> add project </a>
+
+
+
+<br><br><br><br><br><br><br>
+
+SKILLS<br>
+
+{% for i in skills %}
+	{{i.skill}}<br>
+{%endfor%}
+
+<br><br><br><br><br><br><br>
+
+INTERESTS<br>
+
+{% for i in interests %}
+	{{i.interest}}<br>
+{%endfor%}
+
+<br><br><br><br><br><br><br>
+
+PROJECTS<br>
+
+{% for i in projects %}
+	{{i.title}}	{{i.description}}<br>
+{%endfor%}
