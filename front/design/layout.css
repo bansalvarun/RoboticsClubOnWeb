@@ -11,7 +11,7 @@
    c. Intro Section
    d. tutorials
    e. Postfolio
-   f. news
+   f. announcements
    g. About
    h. Map
    i. Contact
@@ -137,6 +137,10 @@ header .logo_ a {
 
 /* primary navigation
 --------------------------------------------------------------------- */
+#login {
+    display: inline;
+}
+
 #nav-wrap ul, #nav-wrap li, #nav-wrap a {
 	margin: 0;
 	padding: 0;
@@ -439,36 +443,36 @@ ul#nav li.active a { color: #333333; }
 
 /* ================================================================== */
 
-/* f. news
+/* f. announcement
 
 /* ================================================================== */
 
-#news {
+#ann {
    background-color: #333;
    padding-top: 156px;
    padding-bottom: 120px;
    color: #7fe6ed;
 }
 
-#news a, #news a:visited  { color: #fff; }
-#news a:hover, #news a:focus { color: #005757; }
+#ann a, #ann a:visited  { color: #fff; }
+#ann a:hover, #ann a:focus { color: #005757; }
 
-#news .section-head h2 { color: #3fada8; }
-#news .section-head p.desc,
-#news .section-head .intro { color: #C2F1F5; }
+#ann .section-head h2 { color: #3fada8; }
+#ann .section-head p.desc,
+#ann .section-head .intro { color: #C2F1F5; }
 
-#news .blog-entries { margin-top: 54px; }
-#news .entry { margin-bottom: 12px; }
+#ann .blog-entries { margin-top: 54px; }
+#ann .entry { margin-bottom: 12px; }
 
 /* post header */
-#news .blog-entries .entry-header {
+#ann .blog-entries .entry-header {
    position: relative;
    margin-bottom: 6px;
 }
-#news .entry-header .entry-title { padding-left: 38px;}
-#news .entry-header h3 { color:#f0f0f0; font: 30px/42px montserrat-regular, sans-serif; }
-#news .entry-header h5 { color:#f0f0f0; montserrat-regular, sans-serif; }
-#news .entry-header .author-image img {
+#ann .entry-header .entry-title { padding-left: 38px;}
+#ann .entry-header h3 { color:#f0f0f0; font: 30px/42px montserrat-regular, sans-serif; }
+#ann .entry-header h5 { color:#f0f0f0; montserrat-regular, sans-serif; }
+#ann .entry-header .author-image img {
    position: absolute;
    top: 12px;
    left: 18px;
@@ -484,32 +488,32 @@ ul#nav li.active a { color: #333333; }
 }
 
 /* post meta */
-#news .entry .post-meta   {
+#ann .entry .post-meta   {
    font: 14px/24px opensans-regular, sans-serif;
    color: #fff;
    margin-top: 12px;
    margin-bottom: 0;
 }
-#news .entry .post-meta time,
-#news .entry .post-meta .dauthor {
+#ann .entry .post-meta time,
+#ann .entry .post-meta .dauthor {
    display: block;
 }
-#news .entry .post-meta time {
+#ann .entry .post-meta time {
    font-family: montserrat-bold, sans-serif;
    text-transform: uppercase;
    letter-spacing: 1px;
 }
 
 /* post content */
-#news .entry .post-content { padding-left: 38px; }
-#news .entry .post-content p {
+#ann .entry .post-content { padding-left: 38px; }
+#ann .entry .post-content p {
    font: 16px/30px opensans-regular, sans-serif;
 }
-#news .entry .post-content a.more-link {
+#ann .entry .post-content a.more-link {
    font: 15px/30px opensans-bold, sans-serif;
    margin-left: 3px;
 }
-#news .entry .post-content a.more-link i {
+#ann .entry .post-content a.more-link i {
    margin-left: 10px;
    font-size: 14px;
 }
@@ -1108,8 +1112,8 @@ ol.commentlist {
 	font-size: 13px;
 }
 
-/* news bottom nav */
-.news-bottom-nav {
+/* ann bottom nav */
+.ann-bottom-nav {
    margin-top: 36px;
    margin-left: 16.66667%;
    padding-top: 5px;
@@ -1287,7 +1291,7 @@ footer .social-links li:first-child { margin-left: 0; }
 
    /* adjust sections padding top */
    #tutorials, #projects,
-   #news, #about { padding-top: 120px; }
+   #ann, #about { padding-top: 120px; }
 
    /* adjust font size */
    .intro, .testimonies .client-cite { font-size: 18px; }
@@ -1308,9 +1312,9 @@ footer .social-links li:first-child { margin-left: 0; }
    #projects #projects-wrapper { margin-top: 12px; }
    #projects #projects-wrapper .col { width: 33.33333%; }
 
-   /* news section
+   /* ann section
    -------------------------------------------------------------------- */
-   #news .blog-entries { margin-top: 30px; }
+   #ann .blog-entries { margin-top: 30px; }
 
    /* about section
    -------------------------------------------------------------------- */
@@ -1356,7 +1360,7 @@ footer .social-links li:first-child { margin-left: 0; }
 
    /* center align some text */
    .section-head, .intro, #about h3,
-   #news .entry-header {
+   #ann .entry-header {
       text-align: center;
    }
 
@@ -1462,24 +1466,24 @@ footer .social-links li:first-child { margin-left: 0; }
 		width: 84%;
    }
 
-   /* news section
+   /* ann section
    --------------------------------------------------------------------- */
-   #news .entry-header .author-image {
+   #ann .entry-header .author-image {
       display: none;
    }
-   #news .entry-header .entry-title {
+   #ann .entry-header .entry-title {
       padding-left: 20px;
       margin-bottom: 18px;
    }
-   #news .entry .post-content {
+   #ann .entry .post-content {
       padding-left: 20px;
       margin-top: 6px;
    }
-   #news .entry .post-meta time,
-   #news .entry .post-meta .dauthor {
+   #ann .entry .post-meta time,
+   #ann .entry .post-meta .dauthor {
       display: inline;
    }
-   #news .entry .post-meta .dauthor:before {
+   #ann .entry .post-meta .dauthor:before {
       content: "/";
       padding-left: 5px;
       padding-right: 5px;
@@ -1616,8 +1620,8 @@ footer .social-links li:first-child { margin-left: 0; }
       width: 100%;
    }
 
-   /* news bottom nav */
-   .news-bottom-nav {
+   /* ann bottom nav */
+   .ann-bottom-nav {
       margin-left: 0;
       text-align: center;
    }
@@ -1659,9 +1663,9 @@ footer .social-links li:first-child { margin-left: 0; }
       margin-top: 24px;
    }
 
-    /* news section
+    /* ann section
    ------------------------------------------------------------------------- */
-   #news .entry-title h3 {
+   #ann .entry-title h3 {
      font-size: 28px;
      line-height: 36px;
    }
