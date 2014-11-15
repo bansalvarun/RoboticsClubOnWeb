@@ -111,9 +111,9 @@ $(draw);
                       <p><a href = '/home/viewuser/{{i.id}}'>{{i.email}}</a>
                       <span style = 'text-align:right'>
                     {% if i.role == 1 %}
-                      member
+                    <a href = '/home/removeuser/{{i.id}}'><button class = 'btn btn-danger '>Delete member</button></a>
                     {% else %}
-                      admin
+                    <a href = '/home/removeuser/{{i.id}}'><button class = 'btn btn-danger '>Delete admin</button></a>
                     {% endif %}
                   </span>
                     </p>
@@ -124,9 +124,12 @@ $(draw);
                 <hr class="feed_hr">
                 <div class="bottom_meta">
                   <div class="row">
+                    <div class = 'span8'>
                     <div class = "bottom_left">
                     {{i.fname}} {{i.lname}} {{i.batch}} {{i.stream}} 
                     </div>
+                  </div>
+
 
                   </div>
                 </div>
