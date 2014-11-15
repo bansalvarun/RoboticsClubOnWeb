@@ -34,7 +34,7 @@ class interests(models.Model):
 class projects(models.Model):
 	title = models.CharField(max_length = 50)
 	description = models.TextField(max_length = 200)
-	status = models.IntegerField(max_length = 1)
+	status = models.IntegerField(max_length = 1)	# 0->undergoing 1->complete
 	mem = models.ForeignKey(members,blank = True, null = True)
 
 class anouncement(models.Model):

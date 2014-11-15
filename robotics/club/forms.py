@@ -11,7 +11,7 @@ class postform(forms.ModelForm):
 		fields = ('title','text')
 
 class commentform(forms.ModelForm):
-	text = forms.CharField(required=True,widget=forms.TextInput)
+	text = forms.CharField(required=True,widget=forms.TextInput,label = ' ')
 
 	class Meta:
 		model = comment
@@ -63,8 +63,8 @@ batches = (
 	)
 
 class editinfoform(forms.ModelForm):
-	fname = forms.CharField(required = True,widget = forms.TextInput)
-	lname = forms.CharField(required = True,widget = forms.TextInput)
+	fname = forms.CharField(required = True,widget = forms.TextInput, label = 'first name')
+	lname = forms.CharField(required = True,widget = forms.TextInput,label = 'last name')
 	email = forms.EmailField(required = True,widget = forms.TextInput)
 	stream = forms.ChoiceField(choices = streams)
 	batch = forms.ChoiceField(choices = batches)

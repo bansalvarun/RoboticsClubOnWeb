@@ -59,15 +59,12 @@ $(draw);
 <header class="mobile">
   <div class="row">
     <div class="col full">
-      <div class="logo"> <a href="#"><img alt="" src="{% static "images/sample.png" %}"></a> </div>
       <nav id="nav-wrap"> <a class="mobile-btn" href="#" title="Show navigation">Show navigation</a> 
       <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
         <ul id="nav" class="nav">
           <li class="active"><a href="#intro">Home</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#news">News and Achievement</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
-          <li style = 'margin-left:300px;'><a href = "{% url 'socialauth_begin' 'google-oauth2' %}">Members</a>
         </ul>
       </nav>
     </div>
@@ -80,31 +77,43 @@ $(draw);
         <div class="row">
           <div class="col full">
             <div class="slider-text">
-              <h2>Hello, We at <span>IIIT Delhi</span> that provides students with a chance to design and deliver robots.</h2>
+              <h2>Hello, The Robotics Club at <span>IIIT Delhi</span>  provides students with a chance to design robots and learn about robotics.</h2>
               <p>There are no secrets to success. It is the result of preparation, hard work, and learning from failure.</p>
             </div>
           </div>
         </div>
+        <div class = 'row' style = 'text-align:center;'>
+<form method = 'link' action = "{% url 'socialauth_begin' 'google-oauth2' %}">
+  <button type = 'submit' > members sign in</button>
+</form>         </div>
       </li>
       <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
         <div class="row">
           <div class="col full">
             <div class="slider-text">
-              <h2>Take a look at some of <a href="#projects">our works</a> or <a href="#contact">get in touch</a> to discuss how we can help you.</h2>
-              <p>If opportunity doesn't knock, build a door.</p>
+              <h2>Take a look at some of our projects or get in touch to discuss how you can get started.</h2>
             </div>
           </div>
         </div>
+        <div class = 'row' style = 'text-align:center;'>
+<form method = 'link' action = "{% url 'socialauth_begin' 'google-oauth2' %}">
+  <button type = 'submit' > lmembers sign in </button>
+</form> 
+        </div>        
       </li>
         <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" class="">
         <div class="row">
           <div class="col full">
             <div class="slider-text">
               <h2>Here you can learn the concepts of Robotics. No prior experience required, <span>Enthusiasm</span> is all we need.</h2>
-              <p>Learning and innovation go hand in hand. The arrogance of success is to think that what you did yesterday will be sufficient for tomorrow.</p>
+
             </div>
           </div>
         </div>
+        <div class = 'row' style = 'text-align:center;'>
+<form method = 'link' action = "{% url 'socialauth_begin' 'google-oauth2' %}">
+  <button type = 'submit' > members sign in </button>
+</form>         </div>        
       </li>
     </ul>
   <ul class="flex-direction-nav"><li><a class="flex-prev" href="#">Previous</a></li><li><a class="flex-next" href="#">Next</a></li></ul></div>
@@ -143,35 +152,7 @@ $(draw);
     </div>
   </div>
 </section>    
-<section id="news">
-  <div class="row section-head">
-    <div class="col full">
-      <h2>News and Achievement</h2>
-      <p class="desc">Our latest posts and rants.</p>
-    </div>
-  </div>
 
-  <div class="blog-entries">
-      <article class="entry">
-      <div class="row entry-header">
-        <div class="author-image"> <img src="image source" alt=""></div>
-        <div class="col g-9 offset-1 entry-title">
-          <h3><a href="#">Name the news</a></h3>
-        </div>
-        <div class="col g-2">
-          <p class="post-meta">
-            <time pubdate="" class="post-date" datetime="date here">Date</time>
-            <span class="dauthor">the author</span></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col g-9 offset-1 post-content">
-          <p>blah blah</p>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
  
  <footer>
   <div class="row">

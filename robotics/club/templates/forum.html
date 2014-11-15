@@ -70,13 +70,13 @@ $(draw);
 <header class="mobile">
   <div class="row">
     <div class="col full">
-      <div class="logo"> <a href="#"><img alt="" src="./design/logo.png"></a> </div>
+      <div class="logo"> <a href="#"><img alt="" src="{% static "images/logo.png" %}"></a> </div>
       <nav id="nav-wrap"> <a class="mobile-btn" href="#" title="Show navigation">Show navigation</a> 
       <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
         <ul id="nav" class="nav">
           <li><a href="/home">Home</a></li>
-          <li class="active"><a href="forum.html">Forum</a></li>
-          <li><a href="/home/profile">Profile</a></li>
+          <li class="active"><a href="/home/forum">Forum</a></li>
+          <li><a href="/home/profile">Edit Profile</a></li>
           <li><a href="/home/anouncements">Annoucements</a></li>
           <li><a href="/logout">Logout</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
@@ -89,20 +89,20 @@ $(draw);
 <div class="container">
       <div class="roww">
         <div class="span8">
+
           <div class="corgi_feed_well">
             <div class="feed_stacked">
               <div class="feed_item">
                 <div class="feed_body">
                   <div class="row">
-                    <div class="feed_profile_pic">
-                      
-                    </div>
+
                     <div class="feed_text" style = 'text-align:center' >
                       <p><h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                         Start new discussion</h3></p>
                     </div>
                   </div>
-                </div>
+                <div class="comment_area">
+                <div class="row">
                 <div style = 'text-align:center'>
                 <form method = 'POST'>
                  {% csrf_token %}
@@ -110,9 +110,23 @@ $(draw);
                   <button type = 'submit'>post</button>
                 </form>
                </div>
+               </div>
+
+                </div>
+                <hr class="feed_hr">
+                <div class="bottom_meta">
+                  <div class="row">
+
+                    <div class="bottom_right">
+                      <a href="" class="show_comment_link">click here</a> 
+                    </div> 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+
 
 
           {% for post in allposts %}
@@ -143,7 +157,9 @@ $(draw);
 
                     </div>
                     <div class="bottom_right">
+                      <a href="/home/viewdiscussion/{{post.id}}">View Comments</a> &nbsp&nbsp&nbsp&nbsp
                       <a href="" class="show_comment_link">Read More</a> 
+
                     </div> 
                   </div>
                 </div>

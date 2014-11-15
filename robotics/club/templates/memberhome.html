@@ -70,17 +70,17 @@ $(draw);
 <header class="mobile">
   <div class="row">
     <div class="col full">
-      <div class="logo"> <a href="#"><img alt="" src="{% static "design/logo.png" %}"></a> </div>
+      <div class="logo"> <a href="#"><img alt="" src="{% static "images/logo.png" %}"></a> </div>
       <nav id="nav-wrap"> <a class="mobile-btn" href="#" title="Show navigation">Show navigation</a> 
       <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
         <ul id="nav" class="nav">
           <li class="active"><a href="/home">Home</a></li>
-          <li><a href="/home/forum">Forum</a></li>
+          <li><a href="forum">Forum</a></li>
           <li><a href="/home/profile">Edit Profile</a></li>
           <li><a href="/home/anouncements">Annoucements</a></li>
-          <li><a href="/home/allusers">All users</a></li>
           <li><a href="/logout">Logout</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
+          <li><div style = 'margin-left:150px; '>Welcome {{user.fname}} {{user.lname}}</div></li>
        </ul>
       </nav>
     </div>
@@ -108,6 +108,7 @@ $(draw);
 					<li><h5>{{i.skill}}</h5></li>
 				{%endfor%} 
 				<br><br><li><a href = '/home/addskill'><h4>Add skill</h4></a></li>
+
 					</ul>
                 </div>
                 <hr class="feed_hr">
@@ -142,7 +143,8 @@ $(draw);
 				{%endfor%} 
 				<br><br><li><a href = '/home/addinterest'><h4>Add interest</h4></a></li>
 					</ul>
-  
+
+
                 </div>
                 <hr class="feed_hr">
                 <div class="bottom_meta">
@@ -182,7 +184,7 @@ $(draw);
 						{% endif %}
 					</ul>
 
-				{%endfor%} 
+				{%endfor%}
 				<br><br><li><a href = '/home/addproject'><h4>Add project</h4></a></li>
 					</ul>
                       

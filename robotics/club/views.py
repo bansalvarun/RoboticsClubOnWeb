@@ -11,6 +11,20 @@ def memhome(request):
 	if request.user.is_authenticated():
 #		newuser = members(fname = "kush", lname = "admin",email = "kushagra14056@iiitd.ac.in", stream = "CSE", role = '3',batch = 'BTech2014',rollno = '2014056')
 #		newuser.save()
+		"""
+		for i in interests.objects.all():
+			i.delete()
+		for i in projects.objects.all():
+			i.delete()
+		for i in skills.objects.all():
+			i.delete()
+		for i in anouncement.objects.all():
+			i.delete()
+		for i in post.objects.all():
+			i.delete()
+		for i in comment.objects.all():
+			i.delete()
+		"""
 		try:
 			curruser = members.objects.get(email = request.user.email)
 		except:
@@ -261,7 +275,7 @@ def profile(request):
 			return HttpResponseRedirect('/notmember')
 
 		if curruser.fname == " ":
-			return HttpResponseRedirect('/update')
+			return HttpResponseRedirect('/home/profile')
 
 		args = {}
 		args.update(csrf(request))	
