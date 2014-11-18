@@ -28,6 +28,11 @@ def events(request):
 	eventset = event.objects.all()
 	return render_to_response('events.html',{'events':eventset})
 
+def forum(request):
+	postset = post.objects.all()
+	commentset = comment.objects.all()
+	return render_to_response('pubforum.html',{'posts':postset,'comments':commentset})
+
 
 def notmember(request):
 	if request.user.is_authenticated():

@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^notmember/', 'robotics.views.notmember', name='notmember.html' ),
     url(r'^events/', 'robotics.views.events', name='events.html' ),
     url(r'^about/', 'robotics.views.about', name='about.html' ),
+    url(r'^forum/', 'robotics.views.forum', name='forum.html' ),
     (r'^home/', include('club.urls')),
 
 )

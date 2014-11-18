@@ -75,8 +75,8 @@ $(draw);
         <ul id="nav" class="nav">
           <li ><a href="/">Home</a></li>
           <li><a href="/about">About Us</a></li>
-          <li><a href="/forum">Forum</a></li>
-          <li class="active" ><a href="/events">Upcoming Events</a></li>
+          <li class="active"><a href="/forum">Forum</a></li>
+          <li><a href="/events">Upcoming Events</a></li>
           <li><a href="http://iiitd.ac.in" target="_blank">IIITD</a></li>
         </ul>
       </nav>
@@ -88,7 +88,7 @@ $(draw);
         <div class="span8">
 
 
-          {% for i in events %}
+          {% for i in posts %}
           <div class="corgi_feed_well">
             <div class="feed_stacked">
               <div class="feed_item">
@@ -105,10 +105,25 @@ $(draw);
                 <div class="comment_area">
                 <div class="row">
 
-                  {{i.description}}
+                  {{i.text}} <br><br>
 
+                </div>   
+               	{% for j in comments %}
+               	{% if j.discussion.id == i.id %}
+                <div class="row">
+                <hr class="feed_hr">
+                <div class="bottom_meta">
+                  <div class="row">
+                  		{{j.text}}  <br>
+                    <div class = "right">
+						{{j.author.fname}} {{j.author.lname}}
+                    </div>
+                  </div>
                 </div>
 
+                </div>
+                {% endif %}
+                {% endfor %}
                 </div>
                 <hr class="feed_hr">
                 <div class="bottom_meta">
@@ -117,7 +132,7 @@ $(draw);
                     posted by - {{i.author.fname}} {{i.author.lname}}
                     </div>
                     <div class="bottom_right">
-                      <a href="" class="show_comment_link">View Details</a> 
+                      <a href="" class="show_comment_link">View Details and comments</a> 
 
                     </div> 
                   </div>
