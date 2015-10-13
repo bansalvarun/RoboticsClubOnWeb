@@ -54,7 +54,6 @@ def viewuser(request,param):
 	else:
 		return HttpResponseRedirect('/')
 
-
 def forum(request):
 	if request.user.is_authenticated():
 		try:
@@ -94,7 +93,6 @@ def viewdiscussion(request,param):
 			newcomment = comment(text = request.POST['text'],author = curruser, discussion = currdiscussion)			
 			newcomment.save()
 
-
 		args = {}
 		args.update(csrf(request))	
 		args['user'] = curruser
@@ -104,7 +102,6 @@ def viewdiscussion(request,param):
 		return render_to_response('discussion.html',args)
 	else:
 		return HttpResponseRedirect('/')
-
 
 def skill(request):
 	if request.user.is_authenticated():
@@ -166,7 +163,6 @@ def project(request):
 		return render_to_response('project.html',args)
 	else:
 		return HttpResponseRedirect('/')
-
 
 def adduser(request):
 	if request.user.is_authenticated():
@@ -333,6 +329,4 @@ def profile(request):
 
 	else:
 		return HttpResponseRedirect('/')
-
-
 
