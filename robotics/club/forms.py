@@ -3,7 +3,7 @@ from models import *
 
 
 class postform(forms.ModelForm):
-	title = forms.CharField(required=True,widget=forms.TextInput)
+	title = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}))
 	text = forms.CharField(required=True,widget=forms.Textarea(attrs={'cols': 30, 'rows': 10}))
 
 	class Meta:
@@ -11,21 +11,21 @@ class postform(forms.ModelForm):
 		fields = ('title','text')
 
 class commentform(forms.ModelForm):
-	text = forms.CharField(required=True,widget=forms.TextInput,label = ' ')
+	text = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}),label = '')
 
 	class Meta:
 		model = comment
 		fields = ('text',)
 
 class addskill(forms.ModelForm):
-	skill = forms.CharField(required=True,widget=forms.TextInput)
+	skill = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}))
 
 	class Meta:
 		model = skills
 		fields = ('skill',)
 
 class addinterest(forms.ModelForm):
-	interest = forms.CharField(required=True,widget=forms.TextInput)
+	interest = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}))
 
 	class Meta:
 		model = interests
@@ -38,7 +38,7 @@ stat = (
 
 
 class addproject(forms.ModelForm):
-	title = forms.CharField(required=True,widget=forms.TextInput)
+	title = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}))
 	description = forms.CharField(required=True,widget=forms.Textarea)
 	status = forms.ChoiceField(choices = stat)
 
@@ -63,9 +63,9 @@ batches = (
 	)
 
 class editinfoform(forms.ModelForm):
-	fname = forms.CharField(required = True,widget = forms.TextInput, label = 'first name')
-	lname = forms.CharField(required = True,widget = forms.TextInput,label = 'last name')
-	email = forms.EmailField(required = True,widget = forms.TextInput)
+	fname = forms.CharField(required = True,widget = forms.TextInput(attrs = attrs = {'class' : 'form-control'}), label = 'first name')
+	lname = forms.CharField(required = True,widget = forms.TextInput(attrs = attrs = {'class' : 'form-control'}),label = 'last name')
+	email = forms.EmailField(required = True,widget = forms.TextInput(attrs = attrs = {'class' : 'form-control'}))
 	stream = forms.ChoiceField(choices = streams)
 	batch = forms.ChoiceField(choices = batches)
 	rollno = forms.IntegerField(required = True)
@@ -88,7 +88,7 @@ class adduserform(forms.ModelForm):
 		fields = ('email','role',)
 
 class anouncementform(forms.ModelForm):
-	title = forms.CharField(required=True,widget=forms.TextInput,label = 'New anouncement')
+	title = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}),label = 'New anouncement')
 	author = models.ForeignKey(members, null=True, blank=True)
 
 	class Meta:
@@ -96,7 +96,7 @@ class anouncementform(forms.ModelForm):
 		fields = ('title',)
 
 class eventform(forms.ModelForm):
-	title = forms.CharField(required=True,widget=forms.TextInput)
+	title = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}))
 	description = forms.CharField(required=True,widget=forms.Textarea)
 	author = models.ForeignKey(members, null=True, blank=True)
 
