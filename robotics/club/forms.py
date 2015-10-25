@@ -88,7 +88,7 @@ class adduserform(forms.ModelForm):
 		fields = ('email','role',)
 
 class anouncementform(forms.ModelForm):
-	title = forms.CharField(required=True,widget=forms.TextInput,label = 'New anouncement')
+	title = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}),label = 'New anouncement')
 	author = models.ForeignKey(members, null=True, blank=True)
 
 	class Meta:
@@ -96,7 +96,7 @@ class anouncementform(forms.ModelForm):
 		fields = ('title',)
 
 class eventform(forms.ModelForm):
-	title = forms.CharField(required=True,widget=forms.TextInput)
+	title = forms.CharField(required=True,widget=forms.TextInput(attrs = attrs = {'class' : 'form-control'}))
 	description = forms.CharField(required=True,widget=forms.Textarea)
 	author = models.ForeignKey(members, null=True, blank=True)
 
